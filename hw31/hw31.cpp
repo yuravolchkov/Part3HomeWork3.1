@@ -6,8 +6,30 @@
 
 class Calculator
 {
+private:
+    double num1=1, num2=1;
+
 public:
-    double num1, num2;
+    double getter_num1()
+    {
+        return num1;
+    }
+
+    void setter_num1(double num1)
+    {
+        this ->num1 = num1;
+    }
+
+    double getter_num2()
+    {
+        return num2;
+    }
+
+    void setter_num2(double num2)
+    {
+        this->num2 = num2;
+    }
+
     double add();
     double multiply();
     double subtract_1_2();
@@ -20,32 +42,32 @@ public:
 
 double Calculator::add()
 {
-return this->num1+this->num2;
+return getter_num1() + getter_num2();
 }
 
 double Calculator::multiply()
 {
-    return this->num1 * this->num2;
+    return getter_num1() * getter_num2();
 }
 
 double Calculator::subtract_1_2()
 {
-    return this->num1 - this->num2;
+    return getter_num1() - getter_num2();
 }
 
 double Calculator::subtract_2_1()
 {
-    return this->num2 - this->num1;
+    return getter_num2() - getter_num1();
 }
 
 double Calculator::divide_1_2()
 {
-    return this->num1 / this->num2;
+    return getter_num1() / getter_num2();
 }
 
 double Calculator::divide_2_1()
 {
-    return this->num2 / this->num1;
+    return getter_num2() / getter_num1();
 }
 
 bool Calculator::set_num1(double num1)
@@ -54,7 +76,7 @@ bool Calculator::set_num1(double num1)
     {
         return false;
     }
-    this->num1 = num1;
+    setter_num1(num1);
     return true;
 }
 
@@ -64,10 +86,9 @@ bool Calculator::set_num2(double num2)
     {
         return false;
     }
-    this->num2 = num2;
+    setter_num2(num2);
     return true;
 }
-
 
 int main()
 {
