@@ -10,118 +10,69 @@ private:
     double num1=1, num2=1;
 
 public:
-    double getter_num1()
-    {
-        return num1;
-    }
+    Calculator(double num1_from_main, double num2_from_main) : num1(num1_from_main), num2(num2_from_main) {}
 
-    void setter_num1(double num1)
+    double add()
     {
-        this ->num1 = num1;
+        return num1 + num2;
     }
-
-    double getter_num2()
+    double multiply()
     {
-        return num2;
+        return num1 * num2;
     }
-
-    void setter_num2(double num2)
+    double subtract_1_2() 
     {
-        this->num2 = num2;
+        return num1- num2;
     }
-
-    double add();
-    double multiply();
-    double subtract_1_2();
-    double subtract_2_1();
-    double divide_1_2();
-    double divide_2_1();
-    bool set_num1(double num1);
-    bool set_num2(double num2);
+    double subtract_2_1()
+    {
+        return num2 - num1;
+    }
+    double divide_1_2()
+    {
+        return num1 / num2;
+    }
+    double divide_2_1()
+    {
+        return num2 / num1;
+    }
 };
-
-double Calculator::add()
-{
-return getter_num1() + getter_num2();
-}
-
-double Calculator::multiply()
-{
-    return getter_num1() * getter_num2();
-}
-
-double Calculator::subtract_1_2()
-{
-    return getter_num1() - getter_num2();
-}
-
-double Calculator::subtract_2_1()
-{
-    return getter_num2() - getter_num1();
-}
-
-double Calculator::divide_1_2()
-{
-    return getter_num1() / getter_num2();
-}
-
-double Calculator::divide_2_1()
-{
-    return getter_num2() / getter_num1();
-}
-
-bool Calculator::set_num1(double num1)
-{
-    if (num1 == 0)
-    {
-        return false;
-    }
-    setter_num1(num1);
-    return true;
-}
-
-bool Calculator::set_num2(double num2)
-{
-    if (num2 == 0)
-    {
-        return false;
-    }
-    setter_num2(num2);
-    return true;
-}
 
 int main()
 {
     setlocale(LC_ALL, "Russian"); // задать русский текст
     std::system("chcp 1251"); // настроить кодировку консоли
     std::system("cls"); // очистить экран
-
-    Calculator counting;
-    double num1, num2;
-
+    double num1_from_main, num2_from_main;
     for (;;) //бесконечный цикл
     {
         for (bool i = 0; i != 1;) //ввод первого числа с проверкой "ненулевого значения"
         {
             std::cout << "Введите num1: ";
-            std::cin >> num1;
-            i = counting.set_num1(num1);
-            if (i == 0)
+            std::cin >> num1_from_main;
+            if (num1_from_main == 0)
             {
-                std::cout << "Неверный ввод! \n";
+             std::cout << "Неверный ввод! \n";
             }
+            else {
+                i = 1;
+            }
+
         }
         for (bool i = 0; i != 1;) //ввод второго числа с проверкой "ненулевого значения"
         {
             std::cout << "Введите num2: ";
-            std::cin >> num2;
-            i = counting.set_num2(num2);
-            if (i == 0)
+            std::cin >> num2_from_main;
+            if (num2_from_main == 0)
             {
                 std::cout << "Неверный ввод! \n";
             }
+            else {
+                i = 1;
+            }
         }
-
+        Calculator counting{num1_from_main, num2_from_main};
+        
         std::cout << "num1 + num2 = " << counting.add() << std::endl;
         std::cout << "num1 * num2 = " << counting.multiply() << std::endl;
         std::cout << "num1 - num2 = " << counting.subtract_1_2() << std::endl;
@@ -129,7 +80,7 @@ int main()
         std::cout << "num1 / num2 = " << counting.divide_1_2() << std::endl;
         std::cout << "num2 / num1 = " << counting.divide_2_1() << std::endl;
     }
-    return 1;
+    return 31;
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
