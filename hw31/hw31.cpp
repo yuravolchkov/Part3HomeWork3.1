@@ -3,10 +3,10 @@
 class Calculator
 {
 private:
-    double num1, num2;
+    double num1=1, num2=1;
 
 public:
-    Calculator(double num1_from_main, double num2_from_main) : num1(num1_from_main), num2(num2_from_main) {}
+    Calculator() {}
 
     double add()
     {
@@ -73,7 +73,7 @@ int main()
         std::cin >> num1_from_main;
         std::cout << "Введите num2: ";
         std::cin >> num2_from_main;
-        Calculator counting{ num1_from_main, num2_from_main };
+        Calculator counting{};
         if (counting.set_num1(num1_from_main) == 1 && counting.set_num2(num2_from_main) == 1)
         {
             std::cout << "num1 + num2 = " << counting.add() << std::endl;
